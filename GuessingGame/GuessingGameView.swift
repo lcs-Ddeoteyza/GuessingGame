@@ -85,9 +85,9 @@ struct GuessingGameView: View {
             Spacer()
 
             // The guess you are about to make, shown nice and big.
-            // TRY: Change the size of this number from 96 to something else.
+            // TRY: Change the size of this number from 96 to something else. changed the size to 132
             Text("\(guess)")
-                .font(.system(size: 96, weight: .bold))
+                .font(.system(size: 132, weight: .bold))
                 .monospacedDigit()
 
             // Four buttons to change the guess.
@@ -136,7 +136,7 @@ struct GuessingGameView: View {
         .fontDesign(.rounded)
         .controlSize(.large)
         // TRY: Change indigo to another colour, such as teal, pink or orange.
-        .tint(Color.indigo)
+        .tint(Color.gray)
         // How big the game's window is on the Mac. It can be made taller or wider.
         .frame(minWidth: 420, minHeight: 640)
     }
