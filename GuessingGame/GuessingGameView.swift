@@ -162,11 +162,11 @@ struct GuessingGameView: View {
         } else {
             if guess < secretNumber {
                 message = "\(guess) is too low. Go higher."
-                messageSymbol = "arrow.up.circle.fill"
+                messageSymbol = "arrowshape.up.circle.fill"
                 messageColor = Color.blue
             } else {
                 message = "\(guess) is too high. Go lower."
-                messageSymbol = "arrow.down.circle.fill"
+                messageSymbol = "arrowshape.down.circle.fill"
                 messageColor = Color.red
             }
         }
