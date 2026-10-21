@@ -130,7 +130,7 @@ struct GuessingGameView: View {
 
             HStack {
                 Image(systemName: "questionmark")
-                Text("Guesses so far: \(guessCount)    Games won: \(gamesWon)")
+                Text("Guesses: \(guessCount) of \(maximumGuesses)    Games won: \(gamesWon)")
             }
             .font(.headline)
             .foregroundStyle(Color.secondary)
@@ -164,6 +164,13 @@ struct GuessingGameView: View {
                 message = "\(guess) is too low. Go higher."
                 messageSymbol = "arrowshape.up.circle.fill"
                 messageColor = Color.blue
+                // Out of guesses, and still not right? Then the game is over.
+                if guess != secretNumber && guessCount >= maximumGuesses {
+                    message = "Out of guesses! My number was \(secretNumber)."
+                    messageSymbol = "xmark.octagon.fill"
+                    messageColor = Color.gray
+                    gameIsOver = true
+                }
             } else {
                 message = "\(guess) is too high. Go lower."
                 messageSymbol = "arrowshape.down.circle.fill"
@@ -171,6 +178,7 @@ struct GuessingGameView: View {
             }
         }
     }
+    
 
     // Makes the guess 10 smaller, but never smaller than the lowest number.
     func lowerGuessByTen() {
@@ -191,6 +199,8 @@ struct GuessingGameView: View {
     // Makes the guess 1 bigger, but never bigger than the highest number.
     // What the game calls the player.
     let playerName: String = "Diego"
+    // How many guesses the player gets before the game is over.
+    let maximumGuesses: Int = 7
     // How many games the player has won since the app started.
     @State var gamesWon: Int = 0
     func raiseGuessByOne() {
